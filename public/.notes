@@ -1,0 +1,9 @@
+any static file that doesn't needs to be routed will go here.
+e.g. images, txt, or even static html file.
+
+
+The web process is that
+
+"Webservers" will look FIRST if the request URL is available in this public folder,
+if not, then it will go directly to the routing procedures.
+if request URL found here, no need to go to the routing procedures.
