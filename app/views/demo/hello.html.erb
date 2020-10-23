@@ -1,2 +1,36 @@
 <h1>This is the Hello Page!</h1>
+<%# Two ways to embed ruby code in html
+1. < % % >: this will just run the code inside  
+2. < %= % >: this will run the code plus inclue it at the html
 
+note:
+    1. Always use double quote when doing string interpolation
+        YES: "Hello #{target}" NO: 'Hello #{target}'
+see below for example:
+%>
+
+<%= 1+1 %>
+
+<br />
+
+<% target = 'world!' %>
+<%= "Hello #{target}" %>
+
+<br/>
+
+<%=
+3.times do |n|
+    puts n
+end
+%>
+
+<br />
+
+<% 3.times do |n|%>
+    <p><%= n %></p>
+<% end%>
+<br/>
+
+<% @array.each do |n|%>
+    <p><%= n %></p>
+<% end%>

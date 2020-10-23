@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+
+  root "demo#index"
+  
+  get "demo/index"
+  get "demo/hello"
+
+
+
+  # Different types of routes implementation
   # ROOT ROUTE
   # The home page or the root route to be called when app is called without any params.
-  root "demo#index"
+  # root "demo#index"
   #  or
   # match "/" => "demo#index", :via => :get
 
@@ -13,16 +22,14 @@ Rails.application.routes.draw do
   # e.g.
   # From: get "demo/index" => "demo#index"
   # To: get "demo/index"
-  get "demo/index"
+  # 
   # "match" is specified to run the routes to any given http apis using ":via => [(array of http apis)]"
   # structure:
   #   match {routes}, :to => {action in controller}, :via => [(array of possible apis)]
   # e.g:
     # match "anyRoutesName", :to => "demo#index", :via => [:get]
   # "anyRoutesName" is the request routes or URL, then it will call the assigned action
-
-  get "demo/hello"
-
+  
   # DEFAULT ROUTE
   # This is a more structural type of routing where it follow the below structuring:
   # '':controller/:action/:id'
