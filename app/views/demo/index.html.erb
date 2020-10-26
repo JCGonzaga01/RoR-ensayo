@@ -1,2 +1,20 @@
-<h1>Hello world!</h1>
+<h1>Hello world page!</h1>
 
+<a href="/demo/hello">Go to hello!</a>
+<br/>
+<%= link_to("Go to hello 2!", {:action => 'hello'}) %>
+
+<br/>
+<%= link_to("Go to hello with parameters", {:action => 'hello', :page => 5, :id => 20}) %>
+
+<br />
+<%= link_to("Go to About us page", {:action => 'about'}) %>
+<br />
+<%= link_to("Go to Contact us page", {:action => 'contact'}) %>
+<br />
+<%= link_to("Go to Contact us page - UK ", {:action => 'contact', :country => 'uk'}) %>
+<br />
+<%= link_to("Go to Contact us page - US || CA ", {:action => 'contact', :country => 'us'}) %>
+<br />
+<%= link_to("Go to Contact us page - Anything else ", {:action => 'contact', :country => 'ja'}) %>
+<br />

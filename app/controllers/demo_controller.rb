@@ -8,6 +8,8 @@ class DemoController < ApplicationController
     # but we can explicitly specify if we want to render different views from the method
     # syntax: 
     # render('{directory goes here, root is 'views' folder}')
+    # or
+    # render( :template => '{directory goes here, root is 'views' folder}')
     # 
     # if no render specified, by default it will take the controller name then action
     # as basis to views html file.
@@ -31,9 +33,37 @@ class DemoController < ApplicationController
     # render('hello')
 
     # by adding @, the variable will now be available in the class itself and the template.
+    # This is calles Instance variable
     # without @, it is just an ordinary variable inside the action
     @array = [1,2,3,4,5]
 
+    @id = params['id']
+    @page =params[:page]
+  end
 
+  def about
+    render('about_us')
+  end
+
+  def contact
+
+    country = params[:country]
+
+    # if (country == 'us') or (country == 'ca')
+    #   @phoneNumber = '(800) - 1234-5678 - us'
+    # elsif (country == 'uk')
+    #   @phoneNumber = '(020) - 1234-5678-uk'
+    # else 
+    #   @phoneNumber = '+1 (987) - 1234-5678- anything else'
+    # end
+
+    if ['us', 'ca'].include?(country)
+      @phoneNumber = '(800) - 1234-5678 - us | ca'
+    elsif country == 'uk'
+      @phoneNumber = '(020) - 9876-5432-1- uk'
+    else @phoneNumber = '+1 (987) - see you soon - ja'
+    end
+
+    render('demo/contact_us')
   end
 end
