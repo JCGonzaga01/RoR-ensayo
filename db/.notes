@@ -1,0 +1,36 @@
+Useful MYSQL syntax
+
+SHOW DATABASES;
+SHOW TABLES;
+SHOW FIELDS FROM {table name};
+
+
+RAILS useful cli
+
+rails generate model {ModelName} [OPTIONAL: fields]{field1:{datatype}}
+    - It will generate new model and it's related files
+    - e.g. rails generate model User first_name:string last_name:string age:integer remarks:text
+        - Adding the OPTIONAL will automatically generate the fields as well
+
+rails db:migrate [OPTIONAL: VERSION]{VERSION=0}
+    - Will migrate all created/generated model
+    - e.g. rails db:migrate VERSION=0
+        - if VERSION=0, revert to the very first schema.
+        - if VERSION={versionnumber}, will migrate up to the specified versionnumber
+            - to see the list of version number, "SELECT * FROM schema_migrations"
+        - if no specified VERSION, will run all the migration versions
+
+
+MODEL NOTES:
+- no need to specify ID fields, rails will automatically generate it
+- To do implement foreign key, conenct parent to child, you can do the following syntax:
+    - t.integer :{foreignKey field_name}, index:true
+        - e.g. t.integer :subject_id, index:true
+    - t.references :{parent model name}
+        - e.g. t.references :subject
+    - t.belongs_to :{parent model name}
+        - e.g. t.belongs_to :subject
+- In our generate models, pages is the child and subjects is the parent.
+
+Migrations
+    - It allows you to modify your database schema within your Rails application
