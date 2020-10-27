@@ -7,6 +7,55 @@ Rails.application.routes.draw do
   get "demo/about"
   get "demo/contact"
 
+  # This is a sample of Resoureceful Routes
+  # Resourceful Routes is the implementation to combine the CRUD to the RESTful Routes
+  # "resources" will auto create ALL routes needed for the CRUD and RESTful routes
+  # syntax:
+  # resources :{controller name}
+  # Since "resources" will auto create ALL routes, you can also do omitting the implementation
+  # e.g.
+  # resources :subjects, :except => [:show]
+  #   - This will create ALL routes EXCEPT show
+  # OR
+  # e.g.
+  # resources :pages, :only => [:index. :show]
+  #   - This will create ONLY those routes specified
+  # To add addtl routes that is not included in the resources,
+  # you can do so by doing the below syntax
+  # 
+  # resources :{controller name} do
+  #   member do
+  #     {addtl routes} // e.g. get :delete
+  #   end
+  # //OR
+  #   collection do
+  #     {addtl routes} // e.g. get :export OR get :import
+  #   end
+  #  end
+
+  resources :subjects do
+    member do
+      get :delete
+    end
+  end
+
+  resources :pages do
+    member do
+      get :delete
+    end
+  end
+
+  # get 'pages/index'
+  # get 'pages/show'
+  # get 'pages/new'
+  # get 'pages/edit'
+  # get 'pages/delete'
+
+  # get 'subjects/index'
+  # get 'subjects/show'
+  # get 'subjects/new'
+  # get 'subjects/edit'
+  # get 'subjects/delete'
 
 
   # Different types of routes implementation
